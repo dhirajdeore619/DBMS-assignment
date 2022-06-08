@@ -1,0 +1,56 @@
+Assignment 2
+
+	
+Write a SQL statement to create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
+
+
+create table jobs (job_id integer primary key , job_title varchar(20) default '' , min_salary integer default 8000 , max_salary integer default null);
+
+
+
+
+
+cdac1=# \d jobs
+                                Table "public.jobs"
+   Column   |         Type          | Collation | Nullable |        Default
+------------+-----------------------+-----------+----------+-----------------------
+ job_id     | integer               |           | not null |
+ job_title  | character varying(20) |           |          | ''::character varying
+ min_salary | integer               |           |          | 8000
+ max_salary | integer               |           |          |
+Indexes:
+    "jobs_pkey" PRIMARY KEY, btree (job_id)
+
+
+
+Write a SQL statement to create and insert a record into the table countries to ensure that, at country_id and the region_id combination will be entered once in the table.
+
+cdac1=# create table countries2(country_id integer, country_name char(20), region_id int , primary key (country_id,region_id));
+CREATE TABLE
+cdac1=# \d countries2
+                   Table "public.countries2"
+    Column    |     Type      | Collation | Nullable | Default
+--------------+---------------+-----------+----------+---------
+ country_id   | integer       |           | not null |
+ country_name | character(20) |           |          |
+ region_id    | integer       |           | not null |
+Indexes:
+    "countries2_pkey" PRIMARY KEY, btree (country_id, region_id)
+
+
+Write a SQL statement to create and insert records into the table countries to ensure that the country_id column will not contain any duplicate data and this will be automatically incremented and the column country_name will be filled up by 'N/A' if no value assigned to that column.
+
+
+cdac1=# create table countries3(country_id serial primary key , country_name char(20) default 'N/A', region_id int );
+CREATE TABLE
+
+
+cdac1=# \d countries3
+                                      Table "public.countries3"
+    Column    |     Type      | Collation | Nullable |                    Default
+--------------+---------------+-----------+----------+------------------------------------------------
+ country_id   | integer       |           | not null | nextval('countries3_country_id_seq'::regclass)
+ country_name | character(20) |           |          | 'N/A'::bpchar
+ region_id    | integer       |           |          |
+Indexes:
+    	"countries3_pkey" PRIMARY KEY, btree (country_id)

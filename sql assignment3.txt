@@ -1,0 +1,29 @@
+Assignment 3
+
+Q. Write a SQL statement to rename the table countries to country_new.
+
+	alter table countries rename to country_new ;
+
+
+
+Q. Write a SQL statement to add a column region_id to the table locations.
+
+	alter table countries2 add column country_code int ;
+
+
+
+Q. Write a SQL statement to change the data type of the column region_id to text in the table locations.
+
+	alter table countries2 alter column country_code type text ;
+
+
+
+Q. Write a SQL statement to drop the column city from the table locations.
+	alter table countries2 drop column country_code ;
+
+
+
+Q. Write a SQL statement to add a primary key for the columns location_id in the locations table.
+	alter table dup_countries add primary key (country_id);
+
+
